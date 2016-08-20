@@ -1,8 +1,8 @@
 #NancyFx
 
-#Information
+##Information
 This is a fork from the Nancyfx project for personal change and usage.
-#Changes
+##Changes
 
 added Httpstatus code for the Response.AsText extension
 
