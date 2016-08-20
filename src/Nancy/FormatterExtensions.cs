@@ -55,6 +55,21 @@ namespace Nancy
 
         /// <summary>
         /// Returns the <paramref name="contents"/> string to the
+        /// agent, using <paramref name="contentType"/> and <paramref name="encoding"/>
+        /// for the <c>Content-Type</c> header.
+        /// </summary>
+        /// <param name="formatter">The formatter.</param>
+        /// <param name="contents">The contents of the response.</param>
+        /// <param name="contentType">Value for the <c>Content-Type</c> header.</param>
+        /// <param name="encoding">The encoding to use.</param>
+        /// <param name="statusCode">The status code.</param>
+        public static Response AsText(this IResponseFormatter formatter, string contents, string contentType, Encoding encoding, HttpStatusCode statusCode = HttpStatusCode.OK)
+        {
+            return new TextResponse(statusCode, contents,encoding);
+        }
+
+        /// <summary>
+        /// Returns the <paramref name="contents"/> string to the
         /// agent, using <c>text/plain</c> and <paramref name="encoding"/>
         /// for the <c>Content-Type</c> header.
         /// </summary>
