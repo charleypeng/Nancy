@@ -34,6 +34,7 @@ namespace Nancy.Json
     using System.IO;
     using Nancy.Json.Simple;
     using Nancy.Extensions;
+    using Newtonsoft.Json;
     /// <summary>
     /// JavaScriptSerializer responsible for serializing objects
     /// </summary>
@@ -80,6 +81,7 @@ namespace Nancy.Json
             }
         }
 
+        /*
         /// <summary>
         /// Deserialize JSON
         /// </summary>
@@ -90,7 +92,29 @@ namespace Nancy.Json
         {
             return SimpleJson.DeserializeObject<T>(input, this.serializerStrategy, this.globalizationConfiguration.DateTimeStyles);
         }
+        */
+        /// <summary>
+        /// Deserialize JSON
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public T Deserialize<T>(string input)
+        {
+            return JsonConvert.DeserializeObject<T>(input);
+        }
 
+        /// <summary>
+        /// Deserialize Json object
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public object DeserializeObject(string input)
+        {
+            return JsonConvert.DeserializeObject(input);
+        }
+
+        /*
         /// <summary>
         /// Deserialize JSON
         /// </summary>
@@ -100,6 +124,7 @@ namespace Nancy.Json
         {
             return SimpleJson.DeserializeObject(input, null, this.serializerStrategy, this.globalizationConfiguration.DateTimeStyles);
         }
+        */
 
         /// <summary>
         /// Register custom JSON converters
@@ -150,6 +175,7 @@ namespace Nancy.Json
             }
         }
 
+        /*
         /// <summary>
         /// Serialize an object to JSON
         /// </summary>
@@ -158,6 +184,16 @@ namespace Nancy.Json
         public string Serialize(object obj)
         {
             return SimpleJson.SerializeObject(obj, this.serializerStrategy);
+        }*/
+
+        /// <summary>
+        /// Serialize an object to JSON
+        /// </summary>
+        /// <param name="obj">The object to serialize</param>
+        /// <returns>A JSON string representation of <paramref name="obj"/></returns>
+        public string Serialize(object obj)
+        {
+            return JsonConvert.SerializeObject(obj);
         }
 
         /// <summary>
